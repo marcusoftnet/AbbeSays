@@ -1,0 +1,16 @@
+Abbe Says is a small site in which I'm planning to keep track of the fun quotes that Albert (Abbe) and my other sons Gustav and Arvid eventually will drop. 
+
+I will for now not build the possiblity to register but build the datamodel so that it will hold for more parents.
+
+Here's my backlog
+- View all qoutes
+- View quotes per kid
+- View quote details
+- Like (via Facebook)
+- Comment on qoute
+- Log in via Basic Authentication
+- Create new kid
+- Create new quote
+- Update quote details
+- Update kid details
+- Create new account
