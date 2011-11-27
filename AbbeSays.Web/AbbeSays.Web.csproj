@@ -73,6 +73,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\css\1140.css" />
+    <Content Include="content\css\ie.css" />
+    <Content Include="content\css\styles.css" />
+    <Content Include="content\images\logo.jpg" />
+    <Content Include="content\js\css3-mediaqueries.js" />
+    <Content Include="homePageDemo.htm" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -86,6 +92,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Views\index.cshtml" />
+    <Content Include="Views\_layout.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

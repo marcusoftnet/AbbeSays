@@ -2,14 +2,14 @@ Abbe Says is a small site in which I'm planning to keep track of the fun quotes 
 
 Oh yeah - it's for me too. To learn loads of great stuff. Like NancyFx, SimpleData and SpecFlow. I will code this in english since I probably will cut some code here that will be used on www.marcusoft.net
 
-I will for now not build the possiblity to register but build the datamodel so that it will hold for more parents.
+I will for now not build the possiblity to register but build the datamodel so that it will hold more parents.
 
 Here's my backlog
-- View all qoutes
+- View all quotes
 - View quotes per kid
 - View quote details
 - Like (via Facebook)
-- Comment on qoute
+- Comment on quote
 - Log in via Basic Authentication
 - Create new kid
 - Create new quote
