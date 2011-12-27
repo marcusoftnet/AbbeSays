@@ -37,20 +37,30 @@
     <Reference Include="HtmlAgilityPlus">
       <HintPath>..\packages\Nancy.Testing.0.9.0\lib\net40\HtmlAgilityPlus.dll</HintPath>
     </Reference>
+    <Reference Include="ImpromptuInterface">
+      <HintPath>..\packages\ImpromptuInterface.5.6.2\lib\net40\ImpromptuInterface.dll</HintPath>
+    </Reference>
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.9.0\lib\net40\Nancy.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.Testing">
       <HintPath>..\packages\Nancy.Testing.0.9.0\lib\net40\Nancy.Testing.dll</HintPath>
     </Reference>
-    <Reference Include="Simple.Data">
-      <HintPath>..\packages\Simple.Data.Core.0.11.3.2\lib\net40\Simple.Data.dll</HintPath>
+    <Reference Include="Simple.Data, Version=0.12.2.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Simple.Data.Core.0.12.2.2\lib\net40\Simple.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Simple.Data.Ado">
-      <HintPath>..\packages\Simple.Data.Ado.0.11.3.2\lib\net40\Simple.Data.Ado.dll</HintPath>
+    <Reference Include="Simple.Data.Ado, Version=0.12.2.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Simple.Data.Ado.0.12.2.2\lib\net40\Simple.Data.Ado.dll</HintPath>
     </Reference>
-    <Reference Include="Simple.Data.SqlServer">
-      <HintPath>..\packages\Simple.Data.SqlServer.0.11.3.2\lib\net40\Simple.Data.SqlServer.dll</HintPath>
+    <Reference Include="Simple.Data.SqlServer, Version=0.12.2.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Simple.Data.SqlServer.0.12.2.2\lib\net40\Simple.Data.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="SpecFlow.Assist.Dynamic, Version=0.2.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SpecFlow.Assist.Dynamic.0.2.2.1\lib\net40\SpecFlow.Assist.Dynamic.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -62,16 +72,37 @@
     <Reference Include="TechTalk.SpecFlow">
       <HintPath>..\packages\SpecFlow.1.8.1\lib\net35\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
-    <Reference Include="xunit">
-      <HintPath>..\packages\xunit.1.7.0.1540\lib\xunit.dll</HintPath>
+    <Reference Include="xunit, Version=1.8.0.1549, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\xunit.1.8.0.1549\lib\xunit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\DBSteps.cs" />
+    <Compile Include="Helpers\InMemoryDB.cs" />
+    <Compile Include="Helpers\QuotePageAutomator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Specs\ViewQuotes.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewQuotes.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\NavigationSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Specs\ViewQuotes.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ViewQuotes.feature.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\AbbeSays.Web\AbbeSays.Web.csproj">
+      <Project>{13356FEE-BE24-46B3-8C63-40C9E159DEC5}</Project>
+      <Name>AbbeSays.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

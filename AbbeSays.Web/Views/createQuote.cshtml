@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "_layout.cshtml";
+}
+
+<h3>Skapa nytt citat</h3>
+<form method="post" action="/Quotes/Create">
+    <select id="KidId" name="KidId">
+        @foreach (var kid in Model.Kids)
+        {
+            <option value="@kid.Id">@kid.Name</option>
+        }
+    </select> <br />
+    <input type="text" id="SaidAt" name="SaidAt" value="@DateTime.Now" /><br />
+    <textarea id="Quote" name="Quote" rows="4" cols="25"></textarea><br />
+    <input type="text" id="Tags" name="Tags" value="" /> <br />
+    <input type="submit" value="Spara" />
+</form>

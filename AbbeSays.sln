@@ -8,9 +8,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbbeSays.Tests", "AbbeSays.Tests\AbbeSays.Tests.csproj", "{4A7CED5A-A491-4837-B4CB-40EAE62017CB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{78B4CB61-81F8-4466-B2BA-F0885FF0659C}"
-	ProjectSection(SolutionItems) = preProject
-		DB\CreateAbbeSaysDb.sql = DB\CreateAbbeSaysDb.sql
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{B4FDBF0C-B593-42FB-AD33-F5F85FD30C6A}"
 	ProjectSection(SolutionItems) = preProject
