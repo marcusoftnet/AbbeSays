@@ -14,7 +14,7 @@ namespace AbbeSays.Web
         {
             db = Database.Open();
 
-            Get["{Id}"] = parameters => { return View["quote.cstml", GetQuoteVm(parameters.Id)]; };
+            Get["{Id}"] = parameters => { return View["quote.cshtml", GetQuoteVm(parameters.Id)]; };
 
             Get["List"] = parameters => { return View["quoteList.cshtml", GetIndexVm(string.Empty)]; };
             Get["List/Kid/{KidName}"] = parameters => { return View["quoteList.cshtml", GetIndexVm(parameters.KidName)]; };

@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "_layout.cshtml";
+}
+    <div id="@Model.Id">
+        <h2>@Model.SaidAt.Date.ToString("yyyy-MM-dd hh:mm")</h2>
+        <span class="normalQuote">@Html.Raw(Model.Quote)</span>
+        <div class="fb-like" 
+             data-href="http://www.abbeSays.se/Quotes/@Model.Id" 
+             data-send="false" 
+             data-width="450" 
+             data-show-faces="true" 
+             data-font="verdana"></div>
+        <hr />
+        <a href="/Quotes/List">Alla</a>
+    </div>
