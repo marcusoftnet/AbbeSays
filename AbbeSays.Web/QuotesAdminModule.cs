@@ -26,7 +26,7 @@ namespace AbbeSays.Web
             Post["/Create"] = paramenters =>
                                   {
                                       var id = SaveQuote(this.Bind<CreateQuoteVm>());
-                                      return Response.AsRedirect("/Create");
+                                      return Response.AsRedirect("/Quotes/" + id);
                                   };
         }
 

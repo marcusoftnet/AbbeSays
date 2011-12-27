@@ -2,6 +2,7 @@
 using System.Dynamic;
 using Nancy;
 using Simple.Data;
+using AbbeSays.Web.Helpers;
 
 namespace AbbeSays.Web
 {
@@ -16,16 +17,22 @@ namespace AbbeSays.Web
 
             Get["{Id}"] = parameters => { return View["quote.cshtml", GetQuoteVm(parameters.Id)]; };
 
-            Get["List"] = parameters => { return View["quoteList.cshtml", GetIndexVm(string.Empty)]; };
-            Get["List/Kid/{KidName}"] = parameters => { return View["quoteList.cshtml", GetIndexVm(parameters.KidName)]; };
+            Get[""] = parameters => { return View["quoteList.cshtml", GetIndexVm(string.Empty)]; };
+            Get["/Kid/{KidName}"] = parameters => { return View["quoteList.cshtml", GetIndexVm(parameters.KidName)]; };
         }
 
-        private object GetQuoteVm(int quoteId)
+        private dynamic GetQuoteVm(int quoteId)
         {
-            return db.Quotes.Find(
-                        db.Quotes.Id == quoteId &&
-                        db.Quotes.Kids.Id == db.Quotes.Id);
+            dynamic vm = new ExpandoObject();
+            vm.Quote = db.Quotes.FindById(quoteId);
+            vm.Kid = db.Kids.FindById(vm.Quote.KidId);
+
+            vm.KidAge = DateTimeExtensions.ToAgeString(vm.Kid.BirthDate, vm.Quote.SaidAt);
+            vm.FullURL = Request.Url.Scheme + "://" + Request.Url.HostName + Request.Url.Path;
+            return vm;
         }
+
+        
 
         private object GetIndexVm(string kidName)
         {
