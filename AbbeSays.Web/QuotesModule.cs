@@ -10,6 +10,7 @@ namespace AbbeSays.Web
     {
         private dynamic db;
 
+
         public QuotesModule()
             : base("/Quotes/")
         {
@@ -28,11 +29,15 @@ namespace AbbeSays.Web
             vm.Kid = db.Kids.FindById(vm.Quote.KidId);
 
             vm.KidAge = DateTimeExtensions.ToAgeString(vm.Kid.BirthDate, vm.Quote.SaidAt);
-            vm.FullURL = Request.Url.Scheme + "://" + Request.Url.HostName + Request.Url.Path;
+            vm.FullURL = FullUrl();
             return vm;
         }
 
-        
+        private string FullUrl()
+        {
+            return Request.Url.Scheme + "://" + Request.Url.HostName + Request.Url.Path;
+        }
+
 
         private object GetIndexVm(string kidName)
         {
@@ -57,7 +62,7 @@ namespace AbbeSays.Web
 
         private dynamic CleanUpHTMLInQuotes(dynamic quotes)
         {
-            foreach (var quote in quotes)
+            foreach (dynamic quote in quotes)
             {
                 var s = quote.Quote.Replace(Environment.NewLine, "<br/>"); ;
                 quote.Quote = s;
