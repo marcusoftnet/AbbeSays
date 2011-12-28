@@ -2,19 +2,21 @@
     Layout = "_layout.cshtml";
 }
 
-<div id="@Model.Quote.Id">
-    <h2>@Model.Quote.SaidAt.Date.ToString("yyyy-MM-dd hh:mm")</h2>
-    <span class="normalQuote">@Html.Raw(Model.Quote.Quote)</span>
-    <br />
-    <br />
-    Sagt av: <a href="/Kid/@Model.Quote.KidId">@Model.Quote.KidName</a> när han var <i>@Model.KidAge</i>
-    <br />
-    <div class="fb-like" 
-            data-href="@Model.FullURL" 
-            data-send="false" 
-            data-width="450" 
-            data-show-faces="true" 
-            data-font="verdana"></div>
-    <hr />
-    <a href="/Quotes/List">Alla</a>
-</div>
+<div>
+    <blockquote class="example-right">
+        <p>
+        @Html.Raw(Model.Quote.Quote)
+        </p>
+    </blockquote>
+    <p>Sagt @Model.Quote.SaidAt.Date.ToString("yyyy-MM-dd hh:mm") av <a href="/Kid/@Model.Quote.KidId">@Model.Quote.KidName</a> 
+        vid en ålder av <i>@Model.KidAge</i></p>
+    <p>
+        <div class="fb-like" 
+             data-href="@Model.FullURL" 
+             data-send="false" 
+             data-width="450" 
+             data-show-faces="true" 
+             data-font="verdana">
+        </div>
+    </p>
+</div>      

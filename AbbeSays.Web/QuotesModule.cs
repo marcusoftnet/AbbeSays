@@ -28,11 +28,11 @@ namespace AbbeSays.Web
             vm.Quote = db.Quotes.Query()
                 .Join(db.Kids, Id: db.Quotes.KidId)
                 .Select(db.Quotes.Quote, 
-                db.Quotes.SaidAt, 
-                db.Quotes.Id, 
-                db.Kids.Name.As("KidName"),
-                db.Kids.Id.As("KidId"), 
-                db.Kids.BirthDate)
+                        db.Quotes.SaidAt, 
+                        db.Quotes.Id, 
+                        db.Kids.Name.As("KidName"),
+                        db.Kids.Id.As("KidId"), 
+                        db.Kids.BirthDate)
                 .Where(db.Quotes.Id == quoteId)
                 .SingleOrDefault();
 

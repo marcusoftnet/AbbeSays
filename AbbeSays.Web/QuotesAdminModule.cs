@@ -21,8 +21,10 @@ namespace AbbeSays.Web
 
             Get["/Create"] = parameters =>
                                  {
-                                     return View["createQuote.cshtml", GetCreateQouteViewModel(Context.CurrentUser.UserName)];
+                                     return View["createQuote.cshtml", 
+                                         GetCreateQouteViewModel(Context.CurrentUser.UserName)];
                                  };
+
             Post["/Create"] = paramenters =>
                                   {
                                       var id = SaveQuote(this.Bind<CreateQuoteVm>());

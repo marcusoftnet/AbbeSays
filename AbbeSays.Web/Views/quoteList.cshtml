@@ -1,19 +1,25 @@
 ﻿@{
     Layout = "_layout.cshtml";
 }
-               
-
 @foreach (var quote in Model.Quotes)
 {
-    <div id="@quote.Id">
-        <h2><a href="/Quotes/@quote.Id">@quote.SaidAt.Date.ToString("yyyy-MM-dd hh:mm")</a></h2>
-        <span class="normalQuote">@Html.Raw(quote.Quote)</span>
-        <div class="fb-like" 
-             data-href="http://abbesays.apphb.com/Quotes/@quote.Id" 
-             data-send="false" 
-             data-width="450" 
-             data-show-faces="true" 
-             data-font="verdana"></div>
-        <hr />
+    <div>
+        <blockquote class="example-right">
+            <a href="/Quotes/@quote.Id">
+                <p>
+                    @Html.Raw(quote.Quote)
+                </p>
+            </a>
+        </blockquote>
+        <p>@quote.Name den @quote.SaidAt.Date.ToString("yyyy-MM-dd hh:mm")</p>
+        <p>
+            <div class="fb-like" 
+                 data-href="http://abbesays.apphb.com/Quotes/@quote.Id" 
+                 data-send="false" 
+                 data-width="450" 
+                 data-show-faces="true" 
+                 data-font="verdana">
+            </div>
+        </p>
     </div>
 }
