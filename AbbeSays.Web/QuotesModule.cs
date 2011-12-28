@@ -25,10 +25,18 @@ namespace AbbeSays.Web
         private dynamic GetQuoteVm(int quoteId)
         {
             dynamic vm = new ExpandoObject();
-            vm.Quote = db.Quotes.FindById(quoteId);
-            vm.Kid = db.Kids.FindById(vm.Quote.KidId);
+            vm.Quote = db.Quotes.Query()
+                .Join(db.Kids, Id: db.Quotes.KidId)
+                .Select(db.Quotes.Quote, 
+                db.Quotes.SaidAt, 
+                db.Quotes.Id, 
+                db.Kids.Name.As("KidName"),
+                db.Kids.Id.As("KidId"), 
+                db.Kids.BirthDate)
+                .Where(db.Quotes.Id == quoteId)
+                .SingleOrDefault();
 
-            vm.KidAge = DateTimeExtensions.ToAgeString(vm.Kid.BirthDate, vm.Quote.SaidAt);
+            vm.KidAge = DateTimeExtensions.ToAgeString(vm.Quote.BirthDate, vm.Quote.SaidAt);
             vm.FullURL = FullUrl();
             return vm;
         }

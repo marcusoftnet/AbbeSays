@@ -7,7 +7,7 @@
     <span class="normalQuote">@Html.Raw(Model.Quote.Quote)</span>
     <br />
     <br />
-    Sagt av: <i>@Model.Kid.Name</i> när han var <i>@Model.KidAge</i>
+    Sagt av: <a href="/Kid/@Model.Quote.KidId">@Model.Quote.KidName</a> när han var <i>@Model.KidAge</i>
     <br />
     <div class="fb-like" 
             data-href="@Model.FullURL" 
