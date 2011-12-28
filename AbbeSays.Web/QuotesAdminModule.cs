@@ -42,9 +42,7 @@ namespace AbbeSays.Web
         private int SaveQuote(CreateQuoteVm quoteInfo)
         {
             var id = db.Quotes.Insert(quoteInfo).Id;
-
             CreateTags((object) id);
-
             return id;
         }
 

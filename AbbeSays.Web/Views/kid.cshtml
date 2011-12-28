@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "_layout.cshtml";
+}
+
+<div>
+    <h2>@Model.Name</h2>
+    <p><b>Born at:</b>@Model.BirthDate</p>
+    <p><b>Parent:</b> @Model.ParentName</p>
+    <p><b>Bio:</b>
+        <blockqoute>@Model.Bio</blockqoute>
+    </p>
+    <p><img src="/content/kidpics/@Model.PictureURL" height="100px" width="100px" /></p>
+</div>      

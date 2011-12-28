@@ -8,7 +8,7 @@
         @Html.Raw(Model.Quote.Quote)
         </p>
     </blockquote>
-    <p>Sagt @Model.Quote.SaidAt.Date.ToString("yyyy-MM-dd hh:mm") av <a href="/Kid/@Model.Quote.KidId">@Model.Quote.KidName</a> 
+    <p>Sagt @Model.Quote.SaidAt.ToShortDateString() av <a href="/Kid/@Model.Quote.KidId">@Model.Quote.KidName</a> 
         vid en ålder av <i>@Model.KidAge</i></p>
     <p>
         <div class="fb-like" 
