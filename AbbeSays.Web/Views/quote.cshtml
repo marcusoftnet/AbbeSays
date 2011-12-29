@@ -10,6 +10,10 @@
     </blockquote>
     <p>Sagt @Model.Quote.SaidAt.ToShortDateString() av <a href="/Kid/@Model.Quote.KidId">@Model.Quote.KidName</a> 
         vid en ålder av <i>@Model.KidAge</i></p>
+    @if (@Model.IsAuthenticated)
+    {
+        <p><a href="/Quotes/Edit/@Model.Quote.Id">Ändra</a></p>
+    }
     <p>
         <div class="fb-like" 
              data-href="@Model.FullURL" 

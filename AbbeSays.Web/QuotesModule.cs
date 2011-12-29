@@ -8,7 +8,11 @@ namespace AbbeSays.Web
 {
     public class QuotesModule : NancyModule
     {
-        private dynamic db;
+        private readonly dynamic db;
+        private bool IsAuthenticated
+        {
+            get { return Context.CurrentUser != null; }
+        }
 
 
         public QuotesModule()
@@ -19,6 +23,7 @@ namespace AbbeSays.Web
             Get["{Id}"] = parameters => { return View["quote.cshtml", GetQuoteVm(parameters.Id)]; };
 
             Get[""] = parameters => { return View["quoteList.cshtml", GetIndexVm(string.Empty)]; };
+
             Get["/Kid/{KidName}"] = parameters => { return View["quoteList.cshtml", GetIndexVm(parameters.KidName)]; };
         }
 
@@ -26,18 +31,21 @@ namespace AbbeSays.Web
         {
             dynamic vm = new ExpandoObject();
             vm.Quote = db.Quotes.Query()
-                .Join(db.Kids, Id: db.Quotes.KidId)
-                .Select(db.Quotes.Quote, 
-                        db.Quotes.SaidAt, 
-                        db.Quotes.Id, 
-                        db.Kids.Name.As("KidName"),
-                        db.Kids.Id.As("KidId"), 
-                        db.Kids.BirthDate)
-                .Where(db.Quotes.Id == quoteId)
-                .SingleOrDefault();
+                        .Join(db.Kids, Id: db.Quotes.KidId)
+                        .Select(db.Quotes.Quote, 
+                                db.Quotes.SaidAt, 
+                                db.Quotes.Id, 
+                                db.Kids.Name.As("KidName"),
+                                db.Kids.Id.As("KidId"), 
+                                db.Kids.BirthDate)
+                        .Where(db.Quotes.Id == quoteId)
+                        .SingleOrDefault();
 
             vm.KidAge = DateTimeExtensions.ToAgeString(vm.Quote.BirthDate, vm.Quote.SaidAt);
             vm.FullURL = FullUrl();
+
+            vm.IsAuthenticated = IsAuthenticated;
+
             return vm;
         }
 
@@ -51,6 +59,7 @@ namespace AbbeSays.Web
         {
             dynamic vm = new ExpandoObject();
             vm.Kids = db.Kids.All().ToList();
+            vm.IsAuthenticated = IsAuthenticated;
 
             dynamic quoteQuery = GetQuotes(kidName);
             vm.Quotes = CleanUpHTMLInQuotes(quoteQuery.ToList());

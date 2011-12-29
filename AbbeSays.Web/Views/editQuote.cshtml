@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "_layout.cshtml";
+}
+<h3>
+    Skapa nytt citat</h3>
+<form method="post" action="/Quotes/Edit">
+    <input type="hidden" value="@Model.Id" id="Id" name="Id" />
+    Kid:<br />
+    <select id="KidId" name="KidId">
+        @foreach (var kid in Model.Kids)
+        {
+        
+            @if (Model.KidId == @kid.Id){
+                <option value="@kid.Id" selected="selected">@kid.Name</option>
+            }
+            else{
+                <option value="@kid.Id">@kid.Name</option>                 
+            }            
+        }
+    </select>
+    <br />
+    Said at:<br />
+        <input class="datepicker"   
+                type="text" 
+                id="SaidAt" 
+                name="SaidAt" 
+                value="@Model.SaidAt.ToShortDateString()" 
+                style="width:160px" /><br />
+    Quote:<br />
+        <textarea id="Quote" name="Quote" rows="15" cols="35">@Model.Quote</textarea><br />
+    <br />
+    <input type="submit" value="Spara" />
+</form>

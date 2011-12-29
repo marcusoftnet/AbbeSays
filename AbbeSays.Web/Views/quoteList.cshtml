@@ -1,6 +1,10 @@
 ﻿@{
     Layout = "_layout.cshtml";
 }
+@if (@Model.IsAuthenticated)
+{
+    <p><a href="/Quotes/Create">Ändra</a></p>
+}
 @foreach (var quote in Model.Quotes)
 {
     <div>
