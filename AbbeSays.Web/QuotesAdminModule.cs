@@ -19,36 +19,69 @@ namespace AbbeSays.Web
             db = Database.Open();
             this.RequiresAuthentication();
 
-            Get["/Create"] = parameters =>
-                                 {
+            Get["/Create"] = parameters => {
                                      return View["createQuote.cshtml", 
                                          GetCreateQouteViewModel(Context.CurrentUser.UserName)];
                                  };
 
             Post["/Create"] = paramenters =>
                                   {
-                                      var id = SaveQuote(this.Bind<CreateQuoteVm>());
+                                      var id = SaveQuote(this.Bind<EditQuoteVm>());
                                       return Response.AsRedirect("/Quotes/" + id);
                                   };
+
+            Get["/Update/{id}"] = parameters =>
+                                      {
+                                          return View["createQuote.cshtml", GetUpdateQuoteViewModel(parameters.Id)];
+                                      };
         }
 
-        private dynamic GetCreateQouteViewModel(string userName)
+        private dynamic GetUpdateQuoteViewModel(int id)
         {
+            var quote = db.Quotes.FindById(id);
             dynamic vm = new ExpandoObject();
-            vm.Kids = db.Kids.FindAll(db.Kids.Parents.UserName == userName).ToList();
+            vm.Id = quote.Id;
+            vm.Kids = GetKidsForParent(Context.CurrentUser.UserName);
+            vm.SaidAt = quote.SaidAt;
+            vm.Quote = quote.Quote;
+            vm.KidId = quote.KidId;
+
             return vm;
         }
 
-        private int SaveQuote(CreateQuoteVm quoteInfo)
+        // TODO: Duplication with model in GetUpdateQuoteViewModel
+        private dynamic GetCreateQouteViewModel(string userName)
         {
-            var id = db.Quotes.Insert(quoteInfo).Id;
-            CreateTags((object) id);
+            dynamic vm = new ExpandoObject();
+            vm.Id = string.Empty;
+            vm.KidId = string.Empty;
+            vm.Kids = GetKidsForParent(userName);
+            vm.Quote = string.Empty;
+            vm.SaidAt = DateTime.Now.ToShortDateString();
+            return vm;
+        }
+
+        private object GetKidsForParent(string userName)
+        {
+            return db.Kids.FindAll(db.Kids.Parents.UserName == userName).ToList();
+        }
+
+        private int SaveQuote(EditQuoteVm quoteInfo)
+        {
+            var id = 0;
+            if(quoteInfo.Id == 0)
+                id = db.Quotes.Insert(quoteInfo).Id;
+            else
+            {
+                id = db.Quotes.Update(quoteInfo);
+            }
+            CreateTags(id);
             return id;
         }
 
-        private void CreateTags(object id)
+        private void CreateTags(int id)
         {
-            foreach (var tag in  GetTagsFromRequest())
+            foreach (var tag in GetTagsFromRequest())
             {
                 var tagId = GetOrCreateTag(tag);
                 AssociateQuoteAndTag(id, tagId);
@@ -75,8 +108,9 @@ namespace AbbeSays.Web
         }
     }
 
-    public class CreateQuoteVm
+    public class EditQuoteVm
     {
+        public int Id { get; set; }
         public int KidId { get; set; }
         public string Quote { get; set; }
         public DateTime SaidAt { get; set; }

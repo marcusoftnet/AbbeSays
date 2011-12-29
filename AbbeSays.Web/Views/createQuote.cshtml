@@ -1,17 +1,30 @@
 ﻿@{
     Layout = "_layout.cshtml";
 }
-
-<h3>Skapa nytt citat</h3>
+<h3>
+    Skapa nytt citat</h3>
 <form method="post" action="/Quotes/Create">
-    Kid:<br /><select id="KidId" name="KidId">
-        @foreach (var kid in Model.Kids)
-        {
-            <option value="@kid.Id">@kid.Name</option>
+Kid:<br />
+<select id="KidId" name="KidId">
+    @foreach (var kid in Model.Kids)
+    {
+        
+        @if (Model.KidId == @kid.Id){
+            <option value="@kid.Id" selected>@kid.Name</option>
         }
-    </select> <br />
-    Said at:<br /><input type="text" id="SaidAt" name="SaidAt" value="@DateTime.Now.ToShortDateString()" style="width:160px" /><br />
-    Quote:<br /><textarea id="Quote" name="Quote" rows="15" cols="35"></textarea><br />
-    Tags:<br /><input type="text" id="Tags" name="Tags" value="" style="width:160px" /> <br />
-    <input type="submit" value="Spara" />
+        else{
+        <option value="@kid.Id">@kid.Name</option>                 
+        }            
+    }
+</select>
+<br />
+Said at:<br />
+<input type="hidden" value="@Model.Id" id="Id" name="Id" />
+<input class="datepicker" type="text" id="SaidAt" name="SaidAt" value="@Model.SaidAt.ToShortDateString()" style="width:160px" /><br />
+Quote:<br />
+<textarea id="Quote" name="Quote" rows="15" cols="35">@Model.Quote</textarea><br />
+Tags:<br />
+<input type="text" id="Tags" name="Tags" value="" style="width: 160px" />
+<br />
+<input type="submit" value="Spara" />
 </form>
