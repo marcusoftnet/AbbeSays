@@ -84,6 +84,7 @@
     <Content Include="content\css\styles.css" />
     <Content Include="content\images\logo.jpg" />
     <Content Include="content\js\css3-mediaqueries.js" />
+    <Content Include="content\kidpics\albert.jpg" />
     <Content Include="homePageDemo.htm" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -117,9 +118,7 @@
   <ItemGroup>
     <Content Include="Views\kid.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="content\kidpics\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
