@@ -12,6 +12,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{B4FDBF0C-B593-42FB-AD33-F5F85FD30C6A}"
 	ProjectSection(SolutionItems) = preProject
 		DB\CreateAbbeSaysDb.sql = DB\CreateAbbeSaysDb.sql
+		DB\Migration1.sql = DB\Migration1.sql
+		DB\Migration2.sql = DB\Migration2.sql
 	EndProjectSection
 EndProject
 Global

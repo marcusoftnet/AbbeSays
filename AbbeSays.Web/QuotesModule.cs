@@ -15,7 +15,7 @@ namespace AbbeSays.Web
         }
 
 
-        public QuotesModule()
+        public QuotesModule(IQuotesRepository quotesRepository)
             : base("/Quotes/")
         {
             db = Database.Open();
@@ -96,7 +96,8 @@ namespace AbbeSays.Web
                         db.Quotes.Quote,
                         db.Quotes.SaidAt,
                         db.Quotes.Kids.Name,
-                        db.Quotes.Kids.BirthDate);
+                        db.Quotes.Kids.BirthDate)
+                .OrderByDescending(db.Quotes.SaidAt);
         }
     }
 }
