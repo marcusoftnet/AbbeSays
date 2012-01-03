@@ -29,7 +29,7 @@ namespace AbbeSays.Web
             {
                 var hashedPassword = GetPasswordHash(password);
 
-                if (db.Parents.ExistsByUserNameAndPassword(username, hashedPassword))
+                if (db.Families.ExistsByUserNameAndPassword(username, hashedPassword))
                 {
                     return new QuotesUserIdentity { UserName = username };                    
                 }

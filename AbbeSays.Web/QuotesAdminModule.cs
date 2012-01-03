@@ -60,7 +60,7 @@ namespace AbbeSays.Web
 
         private IEnumerable<dynamic> GetKidsForParent(string userName)
         {
-            return db.Kids.FindAll(db.Kids.Parents.UserName == userName).ToList();
+            return db.Kids.FindAll(db.Kids.Families.UserName == userName).ToList();
         }
 
         private int SaveOrUpdateQuote(EditQuoteVm quoteInfo)

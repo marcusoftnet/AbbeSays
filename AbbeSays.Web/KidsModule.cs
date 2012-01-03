@@ -22,7 +22,7 @@ namespace AbbeSays.Web
                         db.Kids.Bio,
                         db.Kids.BirthDate,
                         db.Kids.PictureURL,
-                        db.Kids.Parents.Name.As("ParentName")
+                        db.Kids.Families.Name.As("ParentName")
                         )
                 .Where(db.Kids.Id == id)
                 .SingleOrDefault();
