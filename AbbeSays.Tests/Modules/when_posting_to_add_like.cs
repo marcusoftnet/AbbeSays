@@ -8,6 +8,7 @@ namespace AbbeSays.Tests.Modules
     public abstract class when_updating_likes_for_qoute
     {
         protected const int TEST_QUOTE_ID = 1;
+        protected static readonly string TEST_LIKE_URL = "http://localhost/Quotes/" + TEST_QUOTE_ID;
         protected static Browser _browser;
         protected static BrowserResponse _result;
         protected static IQuotesRepository _mockRepository;
@@ -30,7 +31,7 @@ namespace AbbeSays.Tests.Modules
                         "/Quotes/AddLike",
                         with =>
                             {
-                                with.FormValue("QuoteId", TEST_QUOTE_ID.ToString());
+                                with.FormValue("QuoteURL", TEST_LIKE_URL);
                                 with.HttpRequest();
                             });
                 };
@@ -48,7 +49,7 @@ namespace AbbeSays.Tests.Modules
                 "/Quotes/RemoveLike",
                 with =>
                 {
-                    with.FormValue("QuoteId", TEST_QUOTE_ID.ToString());
+                    with.FormValue("QuoteURL", TEST_LIKE_URL);
                     with.HttpRequest();
                 });
         };

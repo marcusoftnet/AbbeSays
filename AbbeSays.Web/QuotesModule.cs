@@ -30,23 +30,32 @@ namespace AbbeSays.Web
 
             Post["AddLike"] = parameters =>
                 {
-                    var quoteId = QuoteIdForm;
+                    var quoteId = IDFromLikedURL;
                     quotesRepository.AddLikeForQuote(quoteId);
-                
+
                     return Response.AsJson(string.Format(LIKE_INCREMENTED_FORMAT, quoteId));
                 };
 
             Post["RemoveLike"] = parameters =>
                 {
-                    var quoteId = QuoteIdForm;
+                    var quoteId = IDFromLikedURL;
                     quotesRepository.RemoveLikeForQuote(quoteId);
 
                     return Response.AsJson(string.Format(LIKE_DECREMENTED_FORMAT, quoteId));
                 };
-
         }
 
-        private int QuoteIdForm { get { return Request.Form["QuoteId"]; } }
+        private int IDFromLikedURL
+        {
+            get
+            {
+                string url = Request.Form["QuoteURL"];
+                var id = url.Substring(url.LastIndexOf('/') + 1);
+
+                return int.Parse(id);
+
+            }
+        }
 
         private dynamic GetQuoteVm(int quoteId)
         {

@@ -44,10 +44,23 @@
                 xfbml: true  // parse XFBML
             });
 
-            // Additional initialization code here
             FB.Event.subscribe('edge.create',
                 function (response) {
-                    alert('You liked the URL: ' + response);
+                    $.ajax({
+                        type: 'POST',
+                        url: '/Quotes/AddLike',
+                        data: { QuoteURL: response },
+                    });
+                }
+            );
+
+            FB.Event.subscribe('edge.remove',
+                function (response) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/Quotes/RemoveLike',
+                        data: { QuoteURL: response },
+                    });
                 }
             );
         };
@@ -58,7 +71,8 @@
             js = d.createElement('script'); js.id = id; js.async = true;
             js.src = "//connect.facebook.net/sv_SE/all.js#xfbml=1";
             d.getElementsByTagName('head')[0].appendChild(js);
-        } (document));
+        } (document));       
+        
     </script>
     
     <div id="mainGrid" class="container">
