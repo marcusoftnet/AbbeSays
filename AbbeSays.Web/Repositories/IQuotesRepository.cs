@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using AbbeSays.Web.ViewModels;
 
-namespace AbbeSays.Web
+namespace AbbeSays.Web.Repositories
 {
     public interface IQuotesRepository
     {

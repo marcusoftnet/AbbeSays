@@ -1,4 +1,5 @@
 ﻿using AbbeSays.Web;
+using AbbeSays.Web.Repositories;
 using Machine.Specifications;
 using Nancy.Testing;
 using NSubstitute;
