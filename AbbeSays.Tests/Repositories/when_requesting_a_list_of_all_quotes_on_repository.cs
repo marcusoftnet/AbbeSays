@@ -6,9 +6,9 @@ using AbbeSays.Web.ViewModels;
 using Machine.Specifications;
 using Simple.Data;
 
-namespace AbbeSays.Tests
+namespace AbbeSays.Tests.Repositories
 {
-    public class when_requesting_a_list_of_all_quotes
+    public class when_requesting_a_list_of_all_quotes_on_repository
     {
         private static IList<QuotesIndexVM> _quotes;
 

@@ -1,26 +1,32 @@
 ﻿@{
     Layout = "_layout.cshtml";
 }
-
 <div>
     <blockquote class="example-right">
         <p>
-        @Html.Raw(Model.Quote.Quote)
+            @Html.Raw(Model.Quote.Quote)
         </p>
     </blockquote>
-    <p>Sagt @Model.Quote.SaidAt.ToShortDateString() av <a href="/Kid/@Model.Quote.KidId">@Model.Quote.KidName</a> 
+    <p>
+        Sagt @Model.Quote.SaidAt.ToShortDateString() av <a href="/Kid/@Model.Quote.KidId">@Model.Quote.KidName</a>
         vid en ålder av <i>@Model.KidAge</i></p>
     @if (@Model.IsAuthenticated)
     {
-        <p><a href="/Quotes/Edit/@Model.Quote.Id">Ändra</a></p>
+        <p>
+            <a href="/Quotes/Edit/@Model.Quote.Id">Ändra</a></p>
     }
     <p>
-        <div class="fb-like" 
-             data-href="@Model.FullURL" 
-             data-send="false" 
-             data-width="450" 
-             data-show-faces="true" 
-             data-font="verdana">
-        </div>
+        <fb:like 
+                href="@Model.FullURL" 
+                send="false" 
+                width="450" 
+                show_faces="true" 
+                font="verdana">
+        </fb:like>
+        <fb:comments 
+                numposts="10" 
+                notify="true"
+                href="@Model.FullURL">
+        </fb:comments>
     </p>
-</div>      
+</div>

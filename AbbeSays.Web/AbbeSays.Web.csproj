@@ -85,7 +85,6 @@
     <Content Include="content\images\logo.jpg" />
     <Content Include="content\js\css3-mediaqueries.js" />
     <Content Include="content\kidpics\albert.jpg" />
-    <Content Include="homePageDemo.htm" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -103,7 +102,9 @@
     <Compile Include="QuotesAdminModule.cs" />
     <Compile Include="QuotesModule.cs" />
     <Compile Include="Repositories\QuotesRepository.cs" />
+    <Compile Include="ViewModels\Kid.cs" />
     <Compile Include="ViewModels\QuotesIndexVM.cs" />
+    <Compile Include="ViewModels\QuoteViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

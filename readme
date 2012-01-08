@@ -16,3 +16,31 @@ Here's my backlog
 - Update quote details
 - Update kid details
 - Create new account
+
+
+MainModule
+http://abbe-sa.se
+  - Top 10 totalt quotes
+  - Kanske top 10 kids
+  - Kanske top tio families
+  
+FamilyModule
+http://www.abbe-sa.se/{familiyName}
+  - Alla qoutes (paged)
+  - Top 10 länk
+  - Länk till alla barn
+http://www.abbe-sa.se/{familiyName}/Top10
+  - Top10
+   
+KidModule
+http://www.abbe-sa.se/{familiyName}/Kid/{kidName}/
+  - Info om ett barn
+  - Barnets citat (paged)
+  
+Quotes
+http://www.abbe-sa.se/{familiyName}/Quote/{id}
+  - Visar ett citat
+ 
+QuotesAdmin 
+http://www.abbe-sa.se/{familiyName}/Quote/Create
+http://www.abbe-sa.se/{familiyName}/Quote/Edit/{id}

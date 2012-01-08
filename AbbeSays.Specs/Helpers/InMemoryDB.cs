@@ -39,7 +39,7 @@ namespace AbbeSays.Specs.Helpers
             adapter.SetKeyColumn("Quotes", "Id");
             adapter.SetAutoIncrementColumn("Quotes", "Id");
 
-            adapter.ConfigureJoin("Users", "Id", "Kids", "Kids", "ParentId", "Parent");
+            adapter.ConfigureJoin("Users", "Id", "Kids", "Kids", "FamiliyId", "Parent");
             adapter.ConfigureJoin("Kids", "Id", "Quotes", "Quotes", "KidId", "Kid");
 
 
@@ -51,7 +51,7 @@ namespace AbbeSays.Specs.Helpers
             DB.Users.Insert(Name: "Fake", Email: "Fake", UserName: "Fake");
             DB.Users.DeleteAll();
 
-            DB.Kids.Insert(Name: "Fake", ParentId: -1, BirthDate: DateTime.Now, Bio: "Fake", Picture: null);
+            DB.Kids.Insert(Name: "Fake", FamiliyId: -1, BirthDate: DateTime.Now, Bio: "Fake", Picture: null);
             DB.Kids.DeleteAll();
 
 

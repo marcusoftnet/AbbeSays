@@ -23,7 +23,29 @@ namespace AbbeSays.Web.Repositories
                         db.Quotes.Kids.Name,
                         db.Quotes.Kids.BirthDate)
                 .OrderBy(db.Quotes.SaidAt)
-                .ToList<QuotesIndexVM>();
+            .ToList<QuotesIndexVM>();
+        }
+
+        public void AddLikeForQuote(int quoteId)
+        {
+            UpdateLikes(quoteId, 1);
+        }
+
+        private void UpdateLikes(int quoteId, int increment)
+        {
+            dynamic quote = GetQuote(quoteId);
+            quote.Likes = quote.Likes + increment;
+            db.Quotes.Update(quote);
+        }
+
+        public void RemoveLikeForQuote(int quoteId)
+        {
+            UpdateLikes(quoteId, -1);
+        }
+
+        public QuoteViewModel GetQuote(int quoteId)
+        {
+            return db.Quotes.FindById(quoteId);
         }
     }
 }

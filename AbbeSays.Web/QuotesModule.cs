@@ -8,6 +8,8 @@ namespace AbbeSays.Web
 {
     public class QuotesModule : NancyModule
     {
+        private const string LIKE_INCREMENTED_FORMAT = "Incremented likes for Quote {0}";
+        private const string LIKE_DECREMENTED_FORMAT = "Decremented likes for Quote {0}";
         private readonly dynamic db;
         private bool IsAuthenticated
         {
@@ -25,18 +27,37 @@ namespace AbbeSays.Web
             Get[""] = parameters => { return View["quoteList.cshtml", GetIndexVm(string.Empty)]; };
 
             Get["/Kid/{KidName}"] = parameters => { return View["quoteList.cshtml", GetIndexVm(parameters.KidName)]; };
+
+            Post["AddLike"] = parameters =>
+                {
+                    var quoteId = QuoteIdForm;
+                    quotesRepository.AddLikeForQuote(quoteId);
+                
+                    return Response.AsJson(string.Format(LIKE_INCREMENTED_FORMAT, quoteId));
+                };
+
+            Post["RemoveLike"] = parameters =>
+                {
+                    var quoteId = QuoteIdForm;
+                    quotesRepository.RemoveLikeForQuote(quoteId);
+
+                    return Response.AsJson(string.Format(LIKE_DECREMENTED_FORMAT, quoteId));
+                };
+
         }
+
+        private int QuoteIdForm { get { return Request.Form["QuoteId"]; } }
 
         private dynamic GetQuoteVm(int quoteId)
         {
             dynamic vm = new ExpandoObject();
             vm.Quote = db.Quotes.Query()
                         .Join(db.Kids, Id: db.Quotes.KidId)
-                        .Select(db.Quotes.Quote, 
-                                db.Quotes.SaidAt, 
-                                db.Quotes.Id, 
+                        .Select(db.Quotes.Quote,
+                                db.Quotes.SaidAt,
+                                db.Quotes.Id,
                                 db.Kids.Name.As("KidName"),
-                                db.Kids.Id.As("KidId"), 
+                                db.Kids.Id.As("KidId"),
                                 db.Kids.BirthDate)
                         .Where(db.Quotes.Id == quoteId)
                         .SingleOrDefault();

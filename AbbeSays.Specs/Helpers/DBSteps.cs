@@ -8,7 +8,7 @@ namespace AbbeSays.Specs.Helpers
     [Binding]
     public class DBSteps
     {
-        private const int TEST_PARENTID = 100;
+        private const int TEST_FAMILYID = 100;
 
         [Given(@"the following quotes in the database")]
         public void LoadQuotes(IList<dynamic> quotes)
@@ -27,7 +27,7 @@ namespace AbbeSays.Specs.Helpers
             //if (InMemoryDB.DB.Kids.ExistsByName(name))
             //    kidId = InMemoryDB.DB.Kids.FindByName(name).Id;
             //else
-                kidId = InMemoryDB.DB.Kids.Insert(ParentId: TEST_PARENTID, Name: name,
+                kidId = InMemoryDB.DB.Kids.Insert(FamiliyId: TEST_FAMILYID, Name: name,
                                                   BirthDate: DateTime.Now.AddYears(-1)).Id;
             return kidId;
         }
