@@ -27,7 +27,8 @@ namespace AbbeSays.Web
 
             Post["/Edit"] = paramenters =>
                             {
-                                var id = SaveOrUpdateQuote(this.Bind<EditQuoteVm>());
+                                var editQuoteVm = this.Bind<EditQuoteVm>();
+                                var id = SaveOrUpdateQuote(editQuoteVm);
                                 return Response.AsRedirect("/Quotes/" + id);
                             };
 

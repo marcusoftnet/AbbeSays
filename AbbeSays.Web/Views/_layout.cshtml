@@ -9,15 +9,18 @@
     <link rel="stylesheet" href="/content/css/1140.css" type="text/css" media="screen" />
     <!--css3-mediaqueries-js - http://code.google.com/p/css3-mediaqueries-js/ - Enables media queries in some unsupported browsers-->
     <script type="text/javascript" src="/content/js/css3-mediaqueries.js"></script>
+    
+    <!-- JQuery -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    
     <!-- Your styles -->
     <link rel="stylesheet" href="/content/css/styles.css" type="text/css" media="screen" />
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
-        rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
     <script type="text/javascript">
-        $(document).ready(function () {
-            $(".datepicker").datepicker();
+        $(function () {
+            $(".datepicker").datepicker("option", "dateFormat", "yyyy-mm-dd");
         });
     </script>
     <script type="text/javascript">
@@ -71,17 +74,16 @@
             js = d.createElement('script'); js.id = id; js.async = true;
             js.src = "//connect.facebook.net/sv_SE/all.js#xfbml=1";
             d.getElementsByTagName('head')[0].appendChild(js);
-        } (document));       
-        
+        }(document));
+
     </script>
-    
+
     <div id="mainGrid" class="container">
         <div class="row headerRow" id="headerRow">
             <div id="headerLeftColumn" class="threecol">
             </div>
             <div id="mainHeader" class="sixcol headerContainer">
-                <h1>
-                    Abbe sa</h1>
+                <h1>Abbe sa</h1>
             </div>
             <div id="headerRightCol" class="threecol last">
             </div>
