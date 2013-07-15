@@ -72,6 +72,8 @@ namespace AbbeSays.Web
                         .Where(db.Quotes.Id == quoteId)
                         .SingleOrDefault();
 
+            vm.Quote.Quote = NewLineToHtmlBreak(vm.Quote.Quote);
+
             vm.KidAge = DateTimeExtensions.ToAgeString(vm.Quote.BirthDate, vm.Quote.SaidAt);
             vm.FullURL = FullUrl();
 
@@ -112,11 +114,15 @@ namespace AbbeSays.Web
         {
             foreach (dynamic quote in quotes)
             {
-                var s = quote.Quote.Replace(Environment.NewLine, "<br/>"); ;
-                quote.Quote = s;
+                quote.Quote =  NewLineToHtmlBreak(quote.Quote);
             }
 
             return quotes;
+        }
+
+        private static string NewLineToHtmlBreak(string quote)
+        {
+            return quote.Replace(Environment.NewLine, "<br/>");
         }
 
         private dynamic IndexViewQuery()
