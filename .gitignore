@@ -18,3 +18,4 @@ _ReSharper*/
 test-results
 *_mm_cache.bin
 *.docstates
+packages/*
